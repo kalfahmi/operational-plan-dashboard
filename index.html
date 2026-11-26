@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة متابعة الخطة التشغيلية ١٤٤٨</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap">
+<style>
+:root{--g:#0f5f4c;--g2:#dcebdf;--gold:#b8901c;--gold2:#f6e8bd;--ink:#26231b;--mut:#6f6650;--line:#e6d9bb;--bg:#f4ead4;--card:#fbf6e9;--done:#1b7f4b;--on:#2a78d6;--sup:#d98e00;--bad:#cc3b3b;--later:#8a9490}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Tajawal',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6}
+header{background:linear-gradient(120deg,#0b4b3c 0%,#13806a 55%,#d4a82a 140%);color:#fff;padding:18px 20px 0;position:relative;overflow:hidden}header:before,header:after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.08);animation:fl 9s ease-in-out infinite}header:before{width:220px;height:220px;left:-60px;top:-90px}header:after{width:140px;height:140px;left:30%;bottom:-70px;animation-delay:-4s}.hw{position:relative;z-index:1}@keyframes fl{50%{transform:translateY(14px) scale(1.06)}}
+.hw{max-width:1120px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+h1{font-size:22px;margin:0;font-weight:700}
+.sub{font-size:13px;opacity:.85}
+.badge{background:rgba(255,255,255,.14);border-radius:8px;padding:6px 12px;font-size:13px;text-align:center}
+nav{display:flex;gap:4px;margin-top:14px;overflow-x:auto}
+nav a{color:#fff;opacity:.8;transition:background .2s,opacity .2s;text-decoration:none;padding:9px 16px;border-radius:8px 8px 0 0;font-size:14px;white-space:nowrap}
+nav a.on{background:var(--bg);color:var(--g);opacity:1;font-weight:700}
+main{max-width:1120px;margin:0 auto;padding:18px 20px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.grid{display:grid;gap:12px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:12px}
+.kpi{position:relative;overflow:hidden;color:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 4px 14px rgba(80,60,20,.15);transition:transform .25s}.kpi:hover{transform:translateY(-4px) rotate(-.4deg)}
+.kpi b{display:block;font-size:32px;line-height:1.2;font-weight:700}
+.kpi span.lb{font-size:13px;opacity:.95}.kpi small{font-size:15px;opacity:.85}.kpi .gl{position:absolute;left:10px;top:4px;font-style:normal;font-size:46px;opacity:.22}
+.k0{background:linear-gradient(135deg,#0f5f4c,#2a9d7f)}.k1{background:linear-gradient(135deg,#1b7f4b,#3dbb72)}.k2{background:linear-gradient(135deg,#2a78d6,#5aa2f0)}.k3{background:linear-gradient(135deg,#b36b00,#e0a020)}.k4{background:linear-gradient(135deg,#7c6f55,#a99b7a)}
+.cele{background:linear-gradient(120deg,#fff0bd,#f9dc86);border-color:#e3c466;margin-bottom:12px}.star{display:inline-block;background:#fffaf0;border-radius:20px;padding:2px 12px;margin:3px;font-size:13px;color:#7a5a00;box-shadow:0 1px 3px rgba(0,0,0,.1)}.star:before{content:'★ ';color:#d49a00;display:inline-block;animation:pu 1.6s ease-in-out infinite}@keyframes pu{50%{transform:scale(1.35) rotate(18deg)}}
+.card{transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(80,60,20,.12)}
+.card,.kpi{animation:up .55s both}.kpis .kpi:nth-child(2){animation-delay:.07s}.kpis .kpi:nth-child(3){animation-delay:.14s}.kpis .kpi:nth-child(4){animation-delay:.21s}.kpis .kpi:nth-child(5){animation-delay:.28s}.two .card:nth-child(2){animation-delay:.12s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
+svg.dn{animation:sp .9s cubic-bezier(.2,.8,.2,1) both}@keyframes sp{from{opacity:0;transform:rotate(-120deg) scale(.7)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+h3{font-size:15px;margin:0 0 10px;font-weight:700}
+.two{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.bar{height:9px;border-radius:5px;background:#eadfc4;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--g);border-radius:5px;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.row{display:flex;align-items:center;gap:10px}
+.pill{display:inline-block;padding:1px 10px;border-radius:20px;font-size:12px;font-weight:500;white-space:nowrap}
+.s-d{background:#dff3e7;color:#14633a}.s-o{background:#e1edfb;color:#1b5ba8}.s-s{background:#fcefd0;color:#8a5b00}.s-b{background:#fbe0e0;color:#a02828}.s-l{background:#eceeed;color:#59635f}
+button,.btn{font-family:inherit;font-size:14px;border:1px solid var(--line);background:#fffaf0;color:var(--ink);border-radius:8px;padding:6px 14px;cursor:pointer}
+button:hover{border-color:var(--g);transform:translateY(-1px)}button{transition:transform .15s,border-color .15s}
+.pri{background:var(--g);color:#fff;border-color:var(--g)}
+.chip.on{background:var(--g2);border-color:var(--g);color:var(--g);font-weight:700}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+input,textarea,select{font-family:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;width:100%;background:#fffcf3;color:var(--ink)}
+textarea{min-height:60px;resize:vertical}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:right;font-weight:500;color:var(--mut);font-size:12px;padding:8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 8px;border-bottom:1px solid #eee2c6;vertical-align:middle}
+tr.cl{cursor:pointer}tr.cl:hover td{background:#f6e9c9}
+.sc{overflow-x:auto}
+.mc{width:34px;height:30px;text-align:center;cursor:pointer;border-radius:6px;font-size:15px;user-select:none}
+.mc:hover{background:var(--g2);transform:scale(1.15)}.mc{transition:transform .15s,background .15s}
+.m1{color:var(--done)}.m2{color:var(--sup)}.m3{color:var(--bad)}.m4{color:var(--on)}.m5{color:var(--later)}
+.ov{position:fixed;inset:0;background:rgba(15,30,26,.5);display:flex;justify-content:center;align-items:flex-start;overflow:auto;padding:24px 12px;z-index:9}
+.dlg{background:var(--card);border-radius:14px;max-width:760px;width:100%;padding:20px}
+.fl{font-size:12px;color:var(--mut);margin-bottom:2px}
+.f2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-bottom:10px}
+.rv{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}
+.rv.lock{opacity:.55}
+.note{font-size:13px;color:var(--mut)}
+.warn{background:var(--gold2);border:1px solid #e0c46f;border-radius:10px;padding:8px 14px;font-size:13px;margin-bottom:12px}
+#sv{position:fixed;bottom:16px;left:16px;z-index:8;box-shadow:0 4px 16px rgba(0,0,0,.2);display:none}
+pre{white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;line-height:1.9}
+@media(max-width:600px){h1{font-size:18px}.kpi b{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div class="hw">
+<div class="top"><div><h1>لوحة متابعة الخطة التشغيلية</h1><div class="sub">ابتدائية عروة بن الزبير · الإدارة العامة للتعليم بمحافظة جدة · العام الدراسي ١٤٤٨ – ١٤٤٩ هـ</div></div>
+<div class="badge">إعداد: أ. خالد الزهراني<br>مدير المدرسة: د. محمد عبده الربعي</div></div>
+<nav id="nav"><a href="#dash">اللوحة</a><a href="#progs">البرامج</a><a href="#monthly">الرصد الشهري</a><a href="#stalled">المتعثرة</a><a href="#report">التقرير الفصلي</a></nav>
+</div></header>
+<main id="root"></main>
+<button id="sv" class="pri">حفظ التغييرات</button>
+<div id="modal"></div>
+<script>
+const SHELL=document.documentElement.outerHTML;
+const BM='/*@@'+'B*/',EM='/*@@'+'E*/';
+const D=/*@@B*/{"months":["ربيع الأول","ربيع الآخر","جمادى الأولى","جمادى الآخرة","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة","محرم"],"planned":[13,15,16,13,10,14,14,14,14,12,10],"goals":["ضمان وصول التعليم للجميع","تطوير بيئة مدرسية آمنة وابتكارية","تعزيز القيم والهوية الوطنية","تحسين تجربة المستفيدين","الاستثمار في الطلاب والمدارس الأولى بالرعاية","تحسين أداء المدارس وتعزيز الشراكة المجتمعية","رفع كفاءة الإنفاق وتعزيز الاستدامة المالية","تطوير كفاءات الموارد البشرية وتعزيز الثقافة المؤسسية","الارتقاء بمستوى التجربة الرقمية","تعزيز الحوكمة والالتزام وإدارة المخاطر"],"reviewLabels":["منتصف الفصل الأول","نهاية الفصل الأول","منتصف الفصل الثاني","نهاية الفصل الثاني"],"P":[
+{"n":1,"name":"انتظامي","g":1,"sub":"١-١","time":"الفصلان – الأسابيع ٣-١ و١٠","target":"الطلاب المستجدون والمتأخرون والمتغيبون","owner":"أ. هزاع الشمراني (الوكيل)","help":"الموجه الطلابي ورواد الفصول","mon":"أ. أحمد القرشي","ind":"حضور ٩٠٪ من المستجدين، وخفض الغياب والتأخر ٥٪، وتحسن انتظام ٧٠٪ من حالات الغياب المتكرر","ev":"سجل الحضور وتقارير نور ونماذج المتابعة","later":0,"planned":50,"r":[{"d":"١٤٤٨/٠٥/٢٥","do":"تنفيذ خطة استقبال المستجدين (الأسابيع ٣-١) ومتابعة الغياب والتأخر في الأسبوع ١٠","p":50,"ob":"لا يوجد","im":"متابعة حالات الغياب المتكرر بخطط فردية والتواصل المبكر مع أولياء الأمور"},{},{},{}]},
+{"n":2,"name":"موهبتي","g":1,"sub":"١-٢","time":"الفصلان – الأسابيع ٧-١٠ (الأول)، ١٣-١٥ (الثاني)","target":"طلاب الصفوف العليا المرشحون وذوو المواهب","owner":"أ. مروان اسطنبولي (منسق الموهوبين)","help":"رائد النشاط ومعلمو العلوم والرياضيات","mon":"أ. سعد الشمراني","ind":"ترشيح ٥٪ من الطلاب للبرامج والمسابقات، ومشاركة ١٥٪ في عرض المواهب","ev":"نماذج الترشيح وملفات الإنجاز","later":0,"planned":50,"r":[{"d":"١٤٤٨/٠٥/٢٥","do":"تنفيذ مرحلة الاكتشاف والترشيح للطلاب الموهوبين (الأسابيع ٧-١٠)","p":50,"ob":"لا يوجد","im":"استكمال برامج الإثراء وتجهيز الطلاب لعرض المواهب في الفصل الثاني"},{},{},{}]},
+{"n":3,"name":"فصل بلا مخاطر","g":2,"sub":"٢-١","time":"الفصلان – شهريًا","target":"الفصول الدراسية","owner":"أ. أحمد الشيخي (الوكيل)","help":"لجنة السلامة (أ. رشيد بكماني)","mon":"أ. رشيد بكماني","ind":"معالجة ٩٠٪ من الملاحظات ورفع ١٠٠٪ من احتياجات المبنى والمرافق","ev":"قوائم فحص وخطابات الرفع","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تنفيذ جولات الفحص الشهرية للفصول ورفع الملاحظات","p":20,"ob":"لا يوجد","im":"متابعة معالجة الملاحظات المرفوعة وتحديث قوائم الفحص"},{},{},{}]},
+{"n":4,"name":"إسعاف مدرسي مصغر","g":2,"sub":"٢-١","time":"الفصل الثاني – الأسبوعان ٧-٨","target":"طلاب المدرسة والمعلمون","owner":"أ. عمار الشمراني (الموجه الصحي)","help":"الوكيل (أ. أحمد الشيخي)","mon":"أ. أحمد الشيخي","ind":"تدريب ٢٠ طالبًا من الصفوف العليا ومنسوبًا","ev":"كشوف حضور وشهادات","later":1,"planned":0,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"مجدول في الفصل الثاني","p":0,"ob":"—","im":"التنسيق المبكر مع المركز الصحي لتحديد موعد التدريب"},{},{},{}]},
+{"n":5,"name":"مهارات التفكير العليا","g":2,"sub":"٢-٢","time":"الفصل الأول – الأسبوع ٥","target":"المعلمون والطلاب","owner":"أ. هزاع الشمراني (الوكيل)","help":"معلمو المواد","mon":"أ. علي السهيمي","ind":"توظيف أسئلة التفكير العليا في ٧٠٪ من الحصص المُلاحظة، ونشاط تطبيقي شهري لكل مادة","ev":"بنك الأنشطة ونماذج الملاحظة","later":0,"planned":100,"r":[{"d":"١٤٤٨/٠٤/٢٠","do":"تنفيذ ورشة مهارات التفكير العليا للمعلمين وتوظيفها في الحصص","p":100,"ob":"لا يوجد","im":"متابعة توظيف أسئلة التفكير العليا عبر الزيارات الصفية وإثراء بنك الأنشطة"},{},{},{}]},
+{"n":6,"name":"قيمة كل شهر","g":3,"sub":"٣-١","time":"الفصلان – شهريًا","target":"الطلاب والمنسوبون","owner":"الموجه الطلابي","help":"رائد النشاط","mon":"أ. سعد الشمراني","ind":"تنفيذ ٨ قيم و١٠ مناسبات خلال العام","ev":"خطة وصور","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تنفيذ قيم الأشهر الماضية والمناسبات الوطنية وفق الخطة","p":20,"ob":"لا يوجد","im":"توثيق أثر القيم على سلوك الطلاب وإشراك الأسر"},{},{},{}]},
+{"n":7,"name":"حكايات الوطن المصورة","g":3,"sub":"٣-٢","time":"الفصل الثاني – الأسابيع ٢-٥","target":"طلاب المرحلة الابتدائية","owner":"معلم الدراسات الاجتماعية","help":"رائد النشاط (أ. سامي شنان)","mon":"أ. سعد الشمراني","ind":"تنفيذ ٦ أنشطة وطنية","ev":"قصص ومنتجات وصور","later":1,"planned":0,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"مجدول في الفصل الثاني","p":0,"ob":"—","im":"إعداد القصص والمواد المصورة قبل بداية التنفيذ"},{},{},{}]},
+{"n":8,"name":"قناة واحدة لخدمة المستفيد","g":4,"sub":"٤-١","time":"الفصل الأول – الأسبوعان ١١-١٢","target":"أولياء الأمور والطلاب","owner":"أ. عبدالعزيز القرني (المساعد الإداري)","help":"أ. خالد الزهراني (الحلول التقنية)","mon":"أ. خالد الزهراني","ind":"الرد على ٩٠٪ خلال ٤٨ ساعة","ev":"سجل الطلبات","later":0,"planned":100,"r":[{"d":"١٤٤٨/٠٦/٠٩","do":"تفعيل قناة موحدة لاستقبال طلبات المستفيدين والرد عليها","p":100,"ob":"لا يوجد","im":"قياس زمن الاستجابة شهريًا وإعداد ردود جاهزة للاستفسارات المتكررة"},{},{},{}]},
+{"n":9,"name":"صوت المستفيد","g":4,"sub":"٤-٢","time":"الفصلان – الأسابيع ٥-١٥","target":"ممثلو الطلاب وأولياء الأمور","owner":"أ. عبدالعزيز القرني","help":"الموجه الطلابي ورائد النشاط","mon":"أ. أحمد القرشي","ind":"٣ اجتماعات للمجلس الطلابي، وخطة تحسين من ٥ نقاط من لقاءات أولياء الأمور","ev":"المحاضر والتوصيات","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"بدء لقاءات المجلس الطلابي وجمع ملاحظات أولياء الأمور","p":20,"ob":"لا يوجد","im":"تحليل الملاحظات وبناء خطة التحسين من ٥ نقاط"},{},{},{}]},
+{"n":10,"name":"بطاقة تقدم فردية","g":5,"sub":"٥-١","time":"الفصلان – كل أسبوعين","target":"طلاب الدعم وذوو الإعاقة وصعوبات التعلم","owner":"أ. أحمد الزهراني (الموجه الطلابي)","help":"معلم المادة (أ. أحمد القرشي)","mon":"أ. أحمد القرشي","ind":"تحديث ٩٠٪ من البطاقات، وخطة فردية لكل طالب من ذوي الاحتياج","ev":"بطاقات المتابعة والخطط الفردية","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تحديث بطاقات المتابعة للطلاب المستهدفين كل أسبوعين","p":20,"ob":"لا يوجد","im":"ربط البطاقات بخطط علاجية فردية ومشاركة النتائج مع أولياء الأمور"},{},{},{}]},
+{"n":11,"name":"القائد الصغير","g":5,"sub":"٥-٢","time":"الفصلان – أسبوعيًا","target":"طلاب جميع الصفوف، والصفوف العليا للأدوار القيادية","owner":"رائد النشاط","help":"معلمو اللغة العربية ورواد الفصول","mon":"أ. علي السهيمي","ind":"٦ لقاءات قيادية، ومشاركة ٣٠ طالبًا في قيادة الطابور، و٦ مواقف تحدث","ev":"سجل النادي والطابور وبطاقات التقييم","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تفعيل الأدوار القيادية الأسبوعية للطلاب في الفصول","p":20,"ob":"لا يوجد","im":"تدوير الأدوار القيادية لتشمل أكبر عدد من الطلاب"},{},{},{}]},
+{"n":12,"name":"مؤشر نواتج التعلم الشهري","g":6,"sub":"٦-١","time":"الفصلان – شهريًا","target":"إدارة المدرسة والمعلمون","owner":"أ. هزاع الشمراني (الوكيل)","help":"مسؤول التقنية","mon":"أ. عبدالناصر الغامدي","ind":"نشر ٨ تقارير شهرية","ev":"لوحة مؤشرات","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"رصد نواتج التعلم الشهرية وإعداد تقارير المؤشر","p":20,"ob":"لا يوجد","im":"تحليل النتائج شهريًا وبناء خطط علاجية للمواد الأقل أداءً"},{},{},{}]},
+{"n":13,"name":"نافس: جاهزية القراءة والرياضيات والعلوم","g":6,"sub":"٦-١","time":"الفصلان – الأسابيع ٣-١٢","target":"طلاب الصفين الثالث والسادس","owner":"أ. هزاع الشمراني (الوكيل)","help":"معلمو لغتي والرياضيات والعلوم","mon":"أ. علي السهيمي","ind":"رفع الإتقان في نافس: القراءة من ٢٥٫٤٪ إلى ٣٥٫٤٪، والرياضيات من ٤٦٫٤٪ إلى ٤٨٪، والعلوم من ٤٨٫٧٪ إلى ٥٤٪","ev":"نتائج المحاكاة والخطط العلاجية","later":0,"planned":50,"r":[{"d":"١٤٤٨/٠٦/٠٩","do":"تنفيذ الاختبارات التجريبية وتحليل نتائجها لطلاب الصفين الثالث والسادس","p":50,"ob":"لا يوجد","im":"تكثيف التدريب على المهارات الأقل إتقانًا في الفصل الثاني"},{},{},{}]},
+{"n":14,"name":"ورشة عمل المجتمعات المهنية","g":6,"sub":"٦-١","time":"الفصل الأول – الأسبوع ٤","target":"المعلمون","owner":"أ. علي السهيمي (وكيل المدرسة)","help":"أ. خالد الزهراني","mon":"أ. خالد الزهراني","ind":"تحسن متوسط الأداء في تبادل الخبرات بين المعلمين المستهدفين بنسبة ١٥٪","ev":"سجل المجتمعات","later":0,"planned":100,"r":[{"d":"١٤٤٨/٠٤/١١","do":"تنفيذ ورشة مجتمعات التعلم المهنية للمعلمين","p":100,"ob":"لا يوجد","im":"تفعيل لقاءات دورية لمجتمعات التعلم حسب المواد ومتابعة أثرها على نواتج التعلم"},{},{},{}]},
+{"n":15,"name":"أيادٍ صغيرة بأثر كبير","g":6,"sub":"٦-٢","time":"الفصلان – مرة كل فصل","target":"الطلاب وأولياء الأمور","owner":"رائد النشاط","help":"لجنة الشراكة","mon":"—","ind":"تنفيذ ٤ مبادرات آمنة","ev":"سجل المبادرات وصور وموافقات","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"التخطيط للمبادرة التطوعية وتحديد الشركاء","p":20,"ob":"لا يوجد","im":"إشراك أولياء الأمور في تنفيذ المبادرة وتوثيق أثرها"},{},{},{}]},
+{"n":16,"name":"الأسرة تقرأ","g":6,"sub":"٦-٢","time":"الفصلان – أسبوعيًا","target":"الطلاب وأسرهم (الصفوف الأولية)","owner":"رائد النشاط","help":"الموجه الطلابي","mon":"أ. أحمد القرشي","ind":"مشاركة ٦٠٪ من الأسر","ev":"سجلات القراءة وصور التكريم","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تنفيذ أنشطة القراءة الأسرية الأسبوعية للصفوف الأولية","p":20,"ob":"لا يوجد","im":"متابعة سجلات القراءة المنزلية وتكريم الأسر المتميزة"},{},{},{}]},
+{"n":17,"name":"شراكة تجهيز ركن","g":7,"sub":"٧-١","time":"الفصل الثاني – الأسابيع ١-٥","target":"الشركاء والطلاب","owner":"معلمو المواد","help":"رائد النشاط","mon":"أ. سعد الشمراني","ind":"تجهيز ركن واحد على الأقل","ev":"صور ومحضر استلام","later":1,"planned":0,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"مجدول في الفصل الثاني","p":0,"ob":"—","im":"التواصل المبكر مع الشركاء لتجهيز الركن"},{},{},{}]},
+{"n":18,"name":"حقيبة التقويم الواقعي","g":8,"sub":"٨-١","time":"الفصل الثاني – الأسبوع ١٤","target":"المعلمون","owner":"أ. علي السهيمي (الوكيل)","help":"أ. خالد الزهراني (معلم خبير)","mon":"أ. خالد الزهراني","ind":"إنتاج أداة لكل مادة","ev":"ملف أدوات","later":1,"planned":0,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"مجدول في الفصل الثاني","p":0,"ob":"—","im":"إعداد محتوى الحقيبة ونماذج التقويم الواقعي مسبقًا"},{},{},{}]},
+{"n":19,"name":"ورشة عمل الاستعداد للرخصة المهنية","g":8,"sub":"٨-١","time":"الفصل الثاني – الأسبوع ١","target":"المعلمون غير الحاصلين على الرخصة والراغبون في رفع الرتبة","owner":"أ. علي السهيمي (الوكيل)","help":"أ. خالد الزهراني (معلم خبير)","mon":"أ. خالد الزهراني","ind":"حضور ٩٠٪ من المستهدفين","ev":"كشف حضور","later":1,"planned":0,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"مجدول في الفصل الثاني","p":0,"ob":"—","im":"حصر المعلمين المستهدفين وتجهيز مواد الورشة قبل بداية الفصل الثاني"},{},{},{}]},
+{"n":20,"name":"ثقافة التغذية الراجعة","g":8,"sub":"٨-٢","time":"الفصلان – مرة كل فصل","target":"منسوبو المدرسة","owner":"مدير المدرسة","help":"الوكيل (أ. علي السهيمي)","mon":"أ. علي السهيمي","ind":"تنفيذ ٣ جولات راجعة","ev":"نماذج موثقة","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تطبيق آلية التغذية الراجعة لمنسوبي المدرسة في الفصل الأول","p":20,"ob":"لا يوجد","im":"تحليل التغذية الراجعة وتحويلها إلى إجراءات تحسين"},{},{},{}]},
+{"n":21,"name":"السلامة الرقمية للصغار","g":9,"sub":"٩-١","time":"الفصل الأول – الأسبوع ١٥","target":"طلاب المرحلة الابتدائية","owner":"معلم المهارات الرقمية","help":"رائد النشاط","mon":"أ. سعد الشمراني","ind":"تدريب ٨٠٪ من الطلاب المستهدفين","ev":"كشف حضور وأنشطة وتقويم قصير","later":1,"planned":0,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"مجدول في الأسبوع ١٥ من الفصل الأول","p":0,"ob":"—","im":"تجهيز محتوى التوعية بالسلامة الرقمية قبل موعد التنفيذ"},{},{},{}]},
+{"n":22,"name":"فصل تفاعلي عبر مدرستي","g":9,"sub":"٩-١","time":"الفصلان – كل شهر","target":"المعلمون والطلاب","owner":"معلم المادة","help":"مسؤول التقنية (أ. عبدالناصر الغامدي)","mon":"أ. عبدالناصر الغامدي","ind":"تنفيذ درس رقمي شهريًا لكل مادة، ورفع مؤشر دافعية التعلم إلى ٧٥٪","ev":"روابط الدروس واستبانة الطلاب","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تفعيل الفصول الافتراضية عبر منصة مدرستي شهريًا","p":20,"ob":"لا يوجد","im":"متابعة نسب تفعيل المعلمين والطلاب للمنصة وتقديم الدعم الفني"},{},{},{}]},
+{"n":23,"name":"ورشة عمل الذكاء الاصطناعي في التعليم","g":9,"sub":"٩-١","time":"الفصل الأول – الأسبوع ١١","target":"المعلمون","owner":"أ. خالد الزهراني","help":"أ. مقبل الزهراني","mon":"أ. خالد الزهراني","ind":"تدريب ٨٠٪ من المعلمين المستهدفين","ev":"كشف حضور وأنشطة وتقويم قصير","later":0,"planned":100,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"تنفيذ ورشة الذكاء الاصطناعي في التعليم للمعلمين","p":100,"ob":"لا يوجد","im":"متابعة تطبيق المعلمين لأدوات الذكاء الاصطناعي ونشر التجارب المتميزة"},{},{},{}]},
+{"n":24,"name":"أرشفة الشواهد السحابية","g":9,"sub":"٩-٢","time":"الفصلان – طوال الفصل","target":"جميع اللجان","owner":"أ. خالد الزهراني (لجنة التميز)","help":"أ. مقبل الزهراني","mon":"أ. مقبل الزهراني","ind":"أرشفة ١٠٠٪ من الشواهد","ev":"مجلدات سحابية","later":0,"planned":20,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"أرشفة شواهد البرامج المنفذة سحابيًا","p":20,"ob":"لا يوجد","im":"توحيد تسمية الملفات وتحديث الأرشيف بعد كل برنامج"},{},{},{}]},
+{"n":25,"name":"إعداد خطة التطوير المهني","g":10,"sub":"١٠-١","time":"الفصل الأول – الأسابيع ١-٣","target":"منسوبو المدرسة","owner":"أ. خالد الزهراني (لجنة التطوير)","help":"أ. علي السهيمي (وكيل المدرسة)","mon":"أ. خالد الزهراني","ind":"اعتماد خطة تدريبية سنوية","ev":"خطة التطوير","later":0,"planned":100,"r":[{"d":"١٤٤٨/٠٤/٠٦","do":"حصر الاحتياجات التدريبية وإعداد خطة التطوير المهني واعتمادها","p":100,"ob":"لا يوجد","im":"قياس أثر البرامج التدريبية وتحديث الخطة وفق نتائج الاحتياج"},{},{},{}]},
+{"n":26,"name":"حقي وحمايتي","g":10,"sub":"١٠-٢","time":"الفصل الأول – الأسبوع ١٤","target":"الطلاب والمنسوبون","owner":"الموجه الطلابي (أ. أحمد القرشي)","help":"وكيل المدرسة (أ. علي السهيمي)","mon":"أ. علي السهيمي","ind":"اعتماد الوثيقة والآلية وتوعية ١٠٠٪ من الطلاب","ev":"الوثيقة المعتمدة وكشوف التوعية","later":1,"planned":0,"r":[{"d":"١٤٤٨/٠٦/٠٢","do":"مجدول في الأسبوع ١٤ من الفصل الأول","p":0,"ob":"—","im":"إعداد المواد التوعوية بحقوق المتعلمين وحمايتهم قبل التنفيذ"},{},{},{}]}
+]}/*@@E*/;
+const SEED={5:{1:1},14:{1:1},25:{1:1},8:{3:1},23:{3:1},1:{2:2},2:{2:2},3:{3:2},6:{3:2},9:{3:2},10:{3:2},11:{3:2},12:{3:2},13:{3:2},15:{3:2},16:{3:2},20:{3:2},22:{3:2},24:{3:2}};
+D.P.forEach(p=>{if(!p.m){p.m=Array(11).fill(0);if(p.later&&p.n!=4||p.n==4)for(let i=0;i<4;i++)p.m[i]=5;const sd=SEED[p.n];if(sd)for(const k in sd)p.m[k]=sd[k]}});
+const A=s=>String(s).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+const ST={d:['منجز','s-d','var(--done)'],o:['وفق الخطة','s-o','var(--on)'],s:['يحتاج دعمًا','s-s','var(--sup)'],b:['متعثر','s-b','var(--bad)'],l:['لم يحن موعده','s-l','var(--later)']};
+const root=document.getElementById('root'),modal=document.getElementById('modal'),sv=document.getElementById('sv');
+let tab='dash',fg=0,fs='',q='',dirty=false,art=null;
+const cur=p=>{let v=0;p.r.forEach(r=>{if(r.p!=null&&r.p!=='')v=+r.p});return v};
+const stat=p=>{const c=cur(p);if(c>=90)return'd';if(p.later&&c===0)return'l';if(c>=p.planned)return'o';if(c>=p.planned*.7)return's';return'b'};
+const pill=p=>{const s=ST[stat(p)];return `<span class="pill ${s[1]}">${s[0]}</span>`};
+const GC=['#0f5f4c','#2a78d6','#d9822b','#8a4fc2','#d14a6f','#1b9aaa','#6b8e23','#c94f2d','#3b6fd1','#a8801a'];
+const bar=(v,c)=>`<div class="bar"><i data-w="${v}" style="width:0;${c?'background:'+c:''}"></i></div>`;
+function anim(){requestAnimationFrame(()=>requestAnimationFrame(()=>{document.querySelectorAll('.bar i[data-w]').forEach(i=>i.style.width=i.dataset.w+'%');if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;document.querySelectorAll('.cnt').forEach(e=>{const v=+e.dataset.v,s=e.dataset.suf||'',t0=performance.now();const f=t=>{const k=Math.min(1,(t-t0)/900);e.textContent=A(Math.round(v*(1-Math.pow(1-k,3))))+s;if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}))}
+function mark(){dirty=true;sv.style.display='block'}
+function goalAvg(g){const a=D.P.filter(p=>p.g==g);return Math.round(a.reduce((s,p)=>s+cur(p),0)/a.length)}
+function counts(){const c={d:0,o:0,s:0,b:0,l:0};D.P.forEach(p=>c[stat(p)]++);return c}
+function avg(){return Math.round(D.P.reduce((s,p)=>s+cur(p),0)/D.P.length)}
+
+function dash(){
+ const c=counts(),tot=D.P.length;
+ let off=0,R=52,C=2*Math.PI*R,arcs='';
+ ['d','o','s','b','l'].forEach(k=>{if(!c[k])return;const len=c[k]/tot*C;arcs+=`<circle cx="70" cy="70" r="${R}" fill="none" stroke="${ST[k][2]}" stroke-width="18" stroke-dasharray="${len-2} ${C-len+2}" stroke-dashoffset="${-off}" transform="rotate(-90 70 70)"/>`;off+=len});
+ let dn=D.P.filter(p=>stat(p)=='d');
+ let h=`<div class="grid kpis">
+ <div class="kpi k0"><i class="gl">◔</i><b><span class="cnt" data-v="${avg()}" data-suf="٪">${A(avg())}٪</span></b><span class="lb">متوسط إنجاز الخطة</span></div>
+ <div class="kpi k1"><i class="gl">✓</i><b><span class="cnt" data-v="${c.d}">${A(c.d)}</span><small> / ${A(tot)}</small></b><span class="lb">برامج منجزة</span></div>
+ <div class="kpi k2"><i class="gl">➜</i><b><span class="cnt" data-v="${c.o}">${A(c.o)}</span></b><span class="lb">وفق الخطة</span></div>
+ <div class="kpi k3"><i class="gl">⚑</i><b><span class="cnt" data-v="${c.s+c.b}">${A(c.s+c.b)}</span></b><span class="lb">تحتاج دعمًا أو متعثرة</span></div>
+ <div class="kpi k4"><i class="gl">⏳</i><b><span class="cnt" data-v="${c.l}">${A(c.l)}</span></b><span class="lb">لم يحن موعدها</span></div></div>
+ ${dn.length?`<div class="card cele"><b>إنجازات تستحق التهنئة</b><div>${dn.map(p=>`<span class="star">${p.name}</span>`).join('')}</div></div>`:''}
+ <div class="grid two"><div class="card"><h3>حالة البرامج</h3><div class="row" style="gap:18px;flex-wrap:wrap">
+ <svg class="dn" width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="توزيع حالات البرامج">${arcs}<text x="70" y="68" text-anchor="middle" font-size="26" font-weight="700" fill="#26231b" font-family="Tajawal">${A(tot)}</text><text x="70" y="88" text-anchor="middle" font-size="12" fill="#6f6650" font-family="Tajawal">برنامجًا</text></svg>
+ <div style="flex:1;min-width:150px">${Object.keys(ST).map(k=>`<div class="row" style="margin:4px 0;cursor:pointer" data-fs="${k}"><i style="width:10px;height:10px;border-radius:3px;background:${ST[k][2]}"></i><span style="flex:1">${ST[k][0]}</span><b>${A(c[k])}</b></div>`).join('')}</div></div>
+ <p class="note" style="margin:10px 0 0">اضغط على أي حالة لعرض برامجها.</p></div>
+ <div class="card"><h3>الإنجاز حسب الهدف العام</h3>${D.goals.map((n,i)=>{const v=goalAvg(i+1);return `<div style="cursor:pointer;margin-bottom:9px" data-fg="${i+1}"><div class="row" style="justify-content:space-between;font-size:13px"><span><i style="display:inline-block;width:9px;height:9px;border-radius:3px;background:${GC[i]};margin-left:6px"></i>${A(i+1)}. ${n}</span><b>${A(v)}٪</b></div>${bar(v,GC[i])}</div>`}).join('')}</div></div>
+ <div class="card" style="margin-top:12px"><h3>مسار الإنجاز بالمراجعات</h3><div class="grid" style="grid-template-columns:repeat(4,minmax(0,1fr))">${D.reviewLabels.map((l,i)=>{const f=D.P.filter(p=>p.r[i]&&p.r[i].p!=null&&p.r[i].p!=='');const a=f.length?Math.round(f.reduce((s,p)=>s+ +p.r[i].p,0)/f.length):null;return `<div style="text-align:center"><div style="font-size:12px;color:var(--mut)">${l}</div><div style="font-size:24px;font-weight:700;color:${a==null?'var(--later)':'var(--g)'}">${a==null?'—':A(a)+'٪'}</div><div class="note">${A(f.length)} برنامجًا مرصودًا</div></div>`}).join('')}</div></div>`;
+ return h}
+
+function progs(){
+ let list=D.P.filter(p=>(!fg||p.g==fg)&&(!fs||stat(p)==fs)&&(!q||p.name.includes(q)||p.owner.includes(q)));
+ let h=`<div class="chips">${[['','الكل'],['d','منجز'],['o','وفق الخطة'],['s','يحتاج دعمًا'],['b','متعثر'],['l','لم يحن موعده']].map(c=>`<button class="chip ${fs===c[0]?'on':''}" data-fs="${c[0]}">${c[1]}</button>`).join('')}
+ <select id="gsel" style="width:auto"><option value="0">كل الأهداف</option>${D.goals.map((n,i)=>`<option value="${i+1}" ${fg==i+1?'selected':''}>${A(i+1)}. ${n}</option>`).join('')}</select>
+ <input id="qin" placeholder="ابحث باسم البرنامج أو المسؤول" value="${q}" style="width:220px"></div>
+ <div class="card sc"><table><thead><tr><th>م</th><th>البرنامج</th><th>الهدف</th><th>المسؤول</th><th>زمن التنفيذ</th><th style="min-width:130px">الإنجاز</th><th>الحالة</th></tr></thead><tbody>
+ ${list.map(p=>`<tr class="cl" data-p="${p.n}"><td>${A(p.n)}</td><td><b>${p.name}</b></td><td>${A(p.sub)}</td><td style="font-size:13px">${p.owner}</td><td style="font-size:13px">${p.time}</td><td><div class="row"><div style="flex:1">${bar(cur(p),ST[stat(p)][2])}</div><span style="font-size:13px;width:36px">${A(cur(p))}٪</span></div></td><td>${pill(p)}</td></tr>`).join('')||'<tr><td colspan="7" class="note">لا توجد برامج بهذا الاختيار.</td></tr>'}
+ </tbody></table></div><p class="note">${A(list.length)} من ${A(D.P.length)} برنامجًا · اضغط على البرنامج لعرض بطاقته وتحديث مراجعاته.</p>`;
+ return h}
+
+const SYM=['','✓','◑','✗','←','—'];
+function monthly(){
+ let h=`<div class="card" style="margin-bottom:12px"><div class="row" style="flex-wrap:wrap;gap:16px;font-size:13px"><b>الرموز:</b><span class="m1">✓ نُفِّذ كما خُطِّط</span><span class="m2">◑ نُفِّذ جزئيًا</span><span class="m3">✗ تعثَّر</span><span class="m4">← أُجِّل</span><span class="m5">— غير مجدول</span><span class="note">اضغط على الخانة لتبديل الرمز</span></div></div>
+ <div class="card sc"><table><thead><tr><th>م</th><th>البرنامج</th>${D.months.map(m=>`<th style="text-align:center;font-size:11px">${m}</th>`).join('')}</tr></thead><tbody>
+ ${D.P.map(p=>{p.m=p.m||Array(11).fill(0);return `<tr><td>${A(p.n)}</td><td style="white-space:nowrap">${p.name}</td>${p.m.map((v,i)=>`<td style="padding:3px"><div class="mc m${v}" data-c="${p.n}:${i}">${SYM[v]||'·'}</div></td>`).join('')}</tr>`}).join('')}
+ <tr><td></td><td><b>المخطط (من الخطة)</b></td>${D.planned.map(v=>`<td style="text-align:center">${A(v)}</td>`).join('')}</tr>
+ <tr><td></td><td><b>المنفذ ✓</b></td>${D.months.map((_,i)=>`<td style="text-align:center">${A(D.P.filter(p=>(p.m||[])[i]==1).length)}</td>`).join('')}</tr>
+ <tr><td></td><td><b>جزئي ◑</b></td>${D.months.map((_,i)=>`<td style="text-align:center;color:var(--sup)">${A(D.P.filter(p=>(p.m||[])[i]==2).length)}</td>`).join('')}</tr>
+ <tr><td></td><td><b>المتعثر ✗</b></td>${D.months.map((_,i)=>`<td style="text-align:center;color:var(--bad)">${A(D.P.filter(p=>(p.m||[])[i]==3).length)}</td>`).join('')}</tr>
+ <tr><td></td><td><b>نسبة الإنجاز</b></td>${D.months.map((_,i)=>{const e=D.P.filter(p=>(p.m||[])[i]==1).length;return `<td style="text-align:center;font-weight:700">${A(Math.round(e/D.planned[i]*100))}٪</td>`}).join('')}</tr>
+ </tbody></table></div>`;
+ return h}
+
+function stalled(){
+ const l=D.P.filter(p=>['s','b'].includes(stat(p)));
+ const up=D.P.filter(p=>stat(p)=='l');
+ let h=`<div class="card" style="margin-bottom:12px"><h3>البرامج المتعثرة والتي تحتاج دعمًا (${A(l.length)})</h3>`;
+ if(!l.length)h+=`<p class="note" style="margin:0">لا توجد برامج متعثرة حاليًا. تُحسب الحالة بمقارنة المتحقق بالمطلوب بلوغه حتى المراجعة، ويمكن تعديله من بطاقة البرنامج.</p>`;
+ else h+=`<div class="sc"><table><thead><tr><th>البرنامج</th><th>المتحقق</th><th>المطلوب</th><th>سبب التعثر</th><th>الإجراء التصحيحي</th><th>موعد الإنجاز</th><th>الحالة</th></tr></thead><tbody>${l.map(p=>{p.fx=p.fx||{};return `<tr class="cl" data-p="${p.n}"><td><b>${p.name}</b></td><td>${A(cur(p))}٪</td><td>${A(p.planned)}٪</td><td>${p.fx.c||'—'}</td><td>${p.fx.a||'—'}</td><td>${p.fx.d||'—'}</td><td>${pill(p)}</td></tr>`}).join('')}</tbody></table></div>`;
+ h+=`</div><div class="card"><h3>برامج قادمة لم يحن موعدها (${A(up.length)})</h3><div class="sc"><table><thead><tr><th>البرنامج</th><th>زمن التنفيذ</th><th>المسؤول</th><th>الإجراء التحضيري</th></tr></thead><tbody>${up.map(p=>`<tr class="cl" data-p="${p.n}"><td><b>${p.name}</b></td><td>${p.time}</td><td style="font-size:13px">${p.owner}</td><td style="font-size:13px">${p.r[0].im||'—'}</td></tr>`).join('')}</tbody></table></div></div>`;
+ return h}
+
+function reportText(){
+ const c=counts();
+ let t=`تقرير المراجعة الفصلية للخطة التشغيلية\nابتدائية عروة بن الزبير – العام الدراسي ١٤٤٨ – ١٤٤٩ هـ\n\n`;
+ t+=`أولًا: المؤشرات العامة\n• متوسط إنجاز الخطة: ${A(avg())}٪\n• عدد البرامج: ${A(D.P.length)} — منجزة: ${A(c.d)}، وفق الخطة: ${A(c.o)}، تحتاج دعمًا: ${A(c.s)}، متعثرة: ${A(c.b)}، لم يحن موعدها: ${A(c.l)}\n\n`;
+ t+=`ثانيًا: الإنجاز حسب الأهداف العامة\n`+D.goals.map((n,i)=>`• ${A(i+1)}. ${n}: ${A(goalAvg(i+1))}٪`).join('\n')+`\n\n`;
+ t+=`ثالثًا: البرامج المنجزة\n`+(D.P.filter(p=>stat(p)=='d').map(p=>`• ${p.name}`).join('\n')||'• لا يوجد')+`\n\n`;
+ const w=D.P.filter(p=>['s','b'].includes(stat(p)));
+ t+=`رابعًا: البرامج التي تحتاج دعمًا أو المتعثرة\n`+(w.map(p=>`• ${p.name} (${A(cur(p))}٪) — ${(p.fx&&p.fx.a)||'يُحدَّد الإجراء التصحيحي'}`).join('\n')||'• لا يوجد')+`\n\n`;
+ t+=`خامسًا: إجراءات التحسين المقترحة للمرحلة القادمة\n`+D.P.filter(p=>stat(p)=='o'&&cur(p)>0).map(p=>`• ${p.name}: ${p.r.filter(r=>r.im).slice(-1)[0].im}`).join('\n')+`\n\nإعداد: أ. خالد الزهراني          مدير المدرسة: د. محمد عبده الربعي`;
+ return t}
+function report(){return `<div class="card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h3 style="margin:0">التقرير الفصلي (يُبنى تلقائيًا من البيانات)</h3><button id="cp" class="pri">نسخ التقرير</button></div><pre id="rp">${reportText()}</pre></div>`}
+
+function openP(n){
+ const p=D.P.find(x=>x.n==n);p.fx=p.fx||{};
+ const ro=!art;
+ const dis=ro?'disabled':'';
+ modal.innerHTML=`<div class="ov" id="ov"><div class="dlg">
+ <div class="row" style="justify-content:space-between;align-items:flex-start"><div><div class="note">بطاقة متابعة برنامج (${A(p.n)}) · الهدف العام ${A(p.g)} · ${A(p.sub)}</div><h2 style="margin:0;font-size:20px">${p.name}</h2></div><button id="cl">إغلاق</button></div>
+ <div class="row" style="margin:12px 0"><div style="flex:1">${bar(cur(p),ST[stat(p)][2])}</div><b>${A(cur(p))}٪</b><span id="pp">${pill(p)}</span></div>
+ <div class="f2"><div><div class="fl">الهدف العام</div>${D.goals[p.g-1]}</div><div><div class="fl">زمن التنفيذ</div>${p.time}</div><div><div class="fl">المستهدفون</div>${p.target}</div><div><div class="fl">المسؤول الرئيس</div>${p.owner}</div><div><div class="fl">المسؤول المساند</div>${p.help}</div><div><div class="fl">مسؤول المتابعة</div>${p.mon}</div></div>
+ <div class="f2"><div><div class="fl">مؤشر الإنجاز</div>${p.ind}</div><div><div class="fl">الشواهد المطلوبة</div>${p.ev}</div></div>
+ <div class="f2"><div><div class="fl">المطلوب بلوغه حتى المراجعة الحالية (٪)</div><input type="number" min="0" max="100" id="pl" value="${p.planned}" ${dis}></div><div><div class="fl">حالة الموعد</div><select id="lt" ${dis}><option value="0" ${p.later?'':'selected'}>حان موعده</option><option value="1" ${p.later?'selected':''}>لم يحن موعده</option></select></div></div>
+ <h3 style="margin-top:14px">المراجعات الدورية</h3>
+ ${p.r.map((r,i)=>{const lock=i>0&&(p.r[i-1].p==null||p.r[i-1].p==='')&&(r.p==null||r.p==='');return `<div class="rv ${lock&&ro?'lock':''}"><b>${D.reviewLabels[i]}</b><div class="f2" style="margin-top:8px"><div><div class="fl">التاريخ</div><input data-r="${i}" data-k="d" value="${r.d||''}" placeholder="١٤٤٨/٠٠/٠٠" ${dis}></div><div><div class="fl">نسبة الإنجاز ٪</div><input type="number" min="0" max="100" data-r="${i}" data-k="p" value="${r.p==null?'':r.p}" ${dis}></div></div><div class="fl">ما تم تنفيذه</div><textarea data-r="${i}" data-k="do" ${dis}>${r.do||''}</textarea><div class="f2" style="margin-top:8px"><div><div class="fl">المعوقات</div><textarea data-r="${i}" data-k="ob" ${dis}>${r.ob||''}</textarea></div><div><div class="fl">إجراءات التحسين</div><textarea data-r="${i}" data-k="im" ${dis}>${r.im||''}</textarea></div></div></div>`}).join('')}
+ <h3>سجل التعثر والإجراء التصحيحي</h3><div class="f2"><div><div class="fl">سبب التعثر</div><textarea data-x="c" ${dis}>${p.fx.c||''}</textarea></div><div><div class="fl">الإجراء التصحيحي</div><textarea data-x="a" ${dis}>${p.fx.a||''}</textarea></div><div><div class="fl">موعد الإنجاز</div><input data-x="d" value="${p.fx.d||''}" ${dis}></div></div>
+ 
+ </div></div>`;
+ const close=()=>{modal.innerHTML='';render()};
+ anim();document.getElementById('cl').onclick=close;
+ document.getElementById('ov').onclick=e=>{if(e.target.id=='ov')close()};
+ const upd=()=>{document.getElementById('pp').innerHTML=pill(p)};
+ modal.querySelectorAll('[data-r]').forEach(el=>el.oninput=()=>{const r=p.r[el.dataset.r],k=el.dataset.k;r[k]=k=='p'?(el.value===''?null:Math.max(0,Math.min(100,+el.value))):el.value;mark();upd()});
+ modal.querySelectorAll('[data-x]').forEach(el=>el.oninput=()=>{p.fx[el.dataset.x]=el.value;mark()});
+ document.getElementById('pl').oninput=e=>{p.planned=Math.max(0,Math.min(100,+e.target.value||0));mark();upd()};
+ document.getElementById('lt').onchange=e=>{p.later=+e.target.value;mark();upd()};
+}
+
+function render(){
+ document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+tab));
+ root.innerHTML=({dash,progs,monthly,stalled,report}[tab]||dash)();
+ root.querySelectorAll('[data-fs]').forEach(e=>e.onclick=()=>{fs=e.dataset.fs;fg=0;tab='progs';location.hash='progs';render()});
+ root.querySelectorAll('[data-fg]').forEach(e=>e.onclick=()=>{fg=+e.dataset.fg;fs='';tab='progs';location.hash='progs';render()});
+ root.querySelectorAll('tr[data-p]').forEach(e=>e.onclick=()=>openP(e.dataset.p));
+ root.querySelectorAll('.mc').forEach(e=>e.onclick=()=>{if(!art)return;const[n,i]=e.dataset.c.split(':'),p=D.P.find(x=>x.n==n);p.m[i]=(p.m[i]+1)%6;mark();render()});
+ anim();
+ const g=document.getElementById('gsel');if(g)g.onchange=()=>{fg=+g.value;render()};
+ const qi=document.getElementById('qin');if(qi)qi.onchange=()=>{q=qi.value.trim();render()};
+ const cp=document.getElementById('cp');if(cp)cp.onclick=async()=>{try{await navigator.clipboard.writeText(document.getElementById('rp').innerText);cp.textContent='تم النسخ'}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('rp'));const s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='حدّد النص وانسخه'}};
+}
+function route(){const h=location.hash.slice(1);tab=['dash','progs','monthly','stalled','report'].includes(h)?h:'dash';render()}
+addEventListener('hashchange',route);route();
+
+sv.onclick=async()=>{
+ if(!art)return;sv.textContent='جارٍ الحفظ…';
+ const i=SHELL.indexOf(BM)+BM.length,j=SHELL.indexOf(EM);
+ const html='<!DOCTYPE html>\n'+SHELL.slice(0,i)+JSON.stringify(D).replace(/</g,'\\u003c')+SHELL.slice(j);
+ try{await art.publish(html)}catch(e){sv.textContent='تعذّر الحفظ، أعد المحاولة'}
+};
+(async()=>{try{art=await claude.use('artifact')}catch(e){art=null}render()})();
+</script>
+</body>
+</html>

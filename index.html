@@ -196,30 +196,37 @@ function openP(n){
 
 function render(){
  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+tab));
- root.innerHTML=({dash,progs,monthly,stalled,report}[tab]||dash)()+(art&&art.local?tools():'');
+ root.innerHTML=({dash,progs,monthly,stalled,report}[tab]||dash)()+tools();
  root.querySelectorAll('[data-fs]').forEach(e=>e.onclick=()=>{fs=e.dataset.fs;fg=0;tab='progs';location.hash='progs';render()});
  root.querySelectorAll('[data-fg]').forEach(e=>e.onclick=()=>{fg=+e.dataset.fg;fs='';tab='progs';location.hash='progs';render()});
  root.querySelectorAll('tr[data-p]').forEach(e=>e.onclick=()=>openP(e.dataset.p));
  root.querySelectorAll('.mc').forEach(e=>e.onclick=()=>{if(!art)return;const[n,i]=e.dataset.c.split(':'),p=D.P.find(x=>x.n==n);p.m[i]=(p.m[i]+1)%6;mark();render()});
  anim();
- const ex=document.getElementById('ex');if(ex){ex.onclick=()=>{const b=new Blob([JSON.stringify(D)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='الخطة-التشغيلية-1448.json';a.click()};document.getElementById('im').onclick=()=>document.getElementById('imf').click();document.getElementById('imf').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{const o=JSON.parse(t);if(o&&o.P&&o.P.length==D.P.length){D.P=o.P;mark();render()}else{alert('الملف غير صالح')}}).catch(()=>{alert('تعذّرت قراءة الملف')})};document.getElementById('rs').onclick=()=>{if(confirm('سيتم مسح تعديلاتك في هذا المتصفح والعودة للبيانات الأصلية. متابعة؟')){try{localStorage.removeItem(LSK)}catch(e){}location.reload()}}}
+ const ul=document.getElementById('ul');if(ul)ul.onclick=unlock;const ex=document.getElementById('ex');if(ex){ex.onclick=()=>{const b=new Blob([JSON.stringify(D)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='الخطة-التشغيلية-1448.json';a.click()};document.getElementById('im').onclick=()=>document.getElementById('imf').click();document.getElementById('imf').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{const o=JSON.parse(t);if(o&&o.P&&o.P.length==D.P.length){D.P=o.P;mark();render()}else{alert('الملف غير صالح')}}).catch(()=>{alert('تعذّرت قراءة الملف')})};const rsb=document.getElementById('rs');if(rsb)rsb.onclick=()=>{if(confirm('سيتم مسح تعديلاتك في هذا المتصفح والعودة للبيانات الأصلية. متابعة؟')){try{localStorage.removeItem(LSK)}catch(e){}location.reload()}}}
  const g=document.getElementById('gsel');if(g)g.onchange=()=>{fg=+g.value;render()};
  const qi=document.getElementById('qin');if(qi)qi.onchange=()=>{q=qi.value.trim();render()};
  const cp=document.getElementById('cp');if(cp)cp.onclick=async()=>{try{await navigator.clipboard.writeText(document.getElementById('rp').innerText);cp.textContent='تم النسخ'}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('rp'));const s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='حدّد النص وانسخه'}};
 }
 const LSK='opd1448';
-function tools(){return `<div class="card" style="margin-top:12px"><h3>إدارة البيانات</h3><p class="note" style="margin:0 0 10px">تُحفظ تعديلاتك في هذا المتصفح على هذا الجهاز. لنقلها إلى جهاز آخر صدّرها هنا ثم استوردها هناك.</p><div class="row" style="flex-wrap:wrap;gap:8px"><button id="ex">تصدير البيانات</button><button id="im">استيراد بيانات</button><input type="file" id="imf" accept=".json" style="display:none"><button id="rs">إعادة البيانات الأصلية</button></div></div>`}
+const API='https://script.google.com/macros/s/AKfycby8ka19ITCfUCCQE5bVrszqSUicH2NVE_a86Qv2M7UpOWH63Vr9SoMwl1QKXwH3awMK/exec';let RM=null,KEY='',TS='0',HASKEY=false;try{KEY=sessionStorage.getItem('opk')||''}catch(e){}
+function tools(){if(RM==='remote'&&!art)return `<div class="card" style="margin-top:12px"><h3>تعديل البيانات</h3><p class="note" style="margin:0 0 10px">اللوحة مشتركة بين جميع الأجهزة، والعرض متاح للجميع. التعديل يحتاج رمز التعديل.</p><div class="row"><button id="ul" class="pri">فتح التعديل</button></div></div>`;
+return `<div class="card" style="margin-top:12px"><h3>إدارة البيانات</h3><p class="note" style="margin:0 0 10px">${RM==='remote'?'تُحفظ التعديلات في قاعدة البيانات المشتركة ويراها الجميع على أي جهاز.':'تعذّر الاتصال بقاعدة البيانات المشتركة، فتُحفظ تعديلاتك في هذا المتصفح فقط.'}</p><div class="row" style="flex-wrap:wrap;gap:8px"><button id="ex">تصدير البيانات</button><button id="im">استيراد بيانات</button><input type="file" id="imf" accept=".json" style="display:none">${RM==='remote'?'':'<button id="rs">إعادة البيانات الأصلية</button>'}</div></div>`}
+async function api(b){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(b)});return r.json()}
+async function unlock(){let k=KEY;if(!k){k=prompt(HASKEY?'أدخل رمز التعديل':'لم يُحدَّد رمز تعديل بعد. اختر رمزًا لك (4 أحرف على الأقل) واحفظه، وسيُطلب منك لاحقًا:');if(!k)return}
+try{const j=HASKEY?await api({action:'check',key:k}):await api({action:'setkey',key:k});if(!j.ok){KEY='';try{sessionStorage.removeItem('opk')}catch(e){}alert(j.error==='weak_key'?'الرمز قصير، استخدم 4 أحرف على الأقل':'الرمز غير صحيح');return}
+HASKEY=true;KEY=k;try{sessionStorage.setItem('opk',k)}catch(e){}art={local:true,remote:true};render()}catch(e){alert('تعذّر الاتصال بالخادم')}}
 function route(){const h=location.hash.slice(1);tab=['dash','progs','monthly','stalled','report'].includes(h)?h:'dash';render()}
 addEventListener('hashchange',route);route();
 
 sv.onclick=async()=>{
- if(!art)return;if(art.local){try{localStorage.setItem(LSK,JSON.stringify(D));sv.textContent='تم الحفظ في هذا المتصفح ✓';dirty=false;setTimeout(()=>{sv.style.display='none';sv.textContent='حفظ التغييرات'},1800)}catch(e){sv.textContent='تعذّر الحفظ: المتصفح يمنع التخزين'}return}sv.textContent='جارٍ الحفظ…';
+ if(!art)return;if(art.remote){sv.textContent='جارٍ الحفظ…';try{const j=await api({action:'save',key:KEY,base:TS,data:{P:D.P}});if(j.ok){TS=j.ts;dirty=false;sv.textContent='تم الحفظ ✓';setTimeout(()=>{sv.style.display='none';sv.textContent='حفظ التغييرات'},1800)}else if(j.error==='conflict'){sv.textContent='عدّل شخص آخر البيانات. حدّث الصفحة ثم أعد التعديل'}else{sv.textContent='رمز التعديل غير صحيح';KEY='';art=null;render()}}catch(e){sv.textContent='تعذّر الحفظ، أعد المحاولة'}return}
+if(art.local){try{localStorage.setItem(LSK,JSON.stringify(D));sv.textContent='تم الحفظ في هذا المتصفح ✓';dirty=false;setTimeout(()=>{sv.style.display='none';sv.textContent='حفظ التغييرات'},1800)}catch(e){sv.textContent='تعذّر الحفظ: المتصفح يمنع التخزين'}return}sv.textContent='جارٍ الحفظ…';
  const i=SHELL.indexOf(BM)+BM.length,j=SHELL.indexOf(EM);
  const html='<!DOCTYPE html>\n'+SHELL.slice(0,i)+JSON.stringify(D).replace(/</g,'\\u003c')+SHELL.slice(j);
  try{await art.publish(html)}catch(e){sv.textContent='تعذّر الحفظ، أعد المحاولة'}
 };
-(async()=>{try{art=await claude.use('artifact')}catch(e){art=null}
-if(!art){art={local:true};try{const sd=localStorage.getItem(LSK);if(sd){const o=JSON.parse(sd);if(o&&o.P&&o.P.length==D.P.length)D.P=o.P}}catch(e){}}
+(async()=>{art=null;try{const c=new AbortController();setTimeout(()=>c.abort(),12000);const r=await fetch(API,{signal:c.signal});const j=await r.json();if(j&&j.ok){RM='remote';HASKEY=!!j.hasKey;TS=j.ts||'0';if(j.data&&j.data.P&&j.data.P.length==D.P.length)D.P=j.data.P;if(KEY&&HASKEY){try{const k=await api({action:'check',key:KEY});if(k.ok)art={local:true,remote:true}}catch(e){}}}}catch(e){}
+if(!RM){art={local:true};try{const sd=localStorage.getItem(LSK);if(sd){const o=JSON.parse(sd);if(o&&o.P&&o.P.length==D.P.length)D.P=o.P}}catch(e){}}
 render()})();
 </script>
 </body>

@@ -196,26 +196,31 @@ function openP(n){
 
 function render(){
  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+tab));
- root.innerHTML=({dash,progs,monthly,stalled,report}[tab]||dash)();
+ root.innerHTML=({dash,progs,monthly,stalled,report}[tab]||dash)()+(art&&art.local?tools():'');
  root.querySelectorAll('[data-fs]').forEach(e=>e.onclick=()=>{fs=e.dataset.fs;fg=0;tab='progs';location.hash='progs';render()});
  root.querySelectorAll('[data-fg]').forEach(e=>e.onclick=()=>{fg=+e.dataset.fg;fs='';tab='progs';location.hash='progs';render()});
  root.querySelectorAll('tr[data-p]').forEach(e=>e.onclick=()=>openP(e.dataset.p));
  root.querySelectorAll('.mc').forEach(e=>e.onclick=()=>{if(!art)return;const[n,i]=e.dataset.c.split(':'),p=D.P.find(x=>x.n==n);p.m[i]=(p.m[i]+1)%6;mark();render()});
  anim();
+ const ex=document.getElementById('ex');if(ex){ex.onclick=()=>{const b=new Blob([JSON.stringify(D)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='الخطة-التشغيلية-1448.json';a.click()};document.getElementById('im').onclick=()=>document.getElementById('imf').click();document.getElementById('imf').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{const o=JSON.parse(t);if(o&&o.P&&o.P.length==D.P.length){D.P=o.P;mark();render()}else{alert('الملف غير صالح')}}).catch(()=>{alert('تعذّرت قراءة الملف')})};document.getElementById('rs').onclick=()=>{if(confirm('سيتم مسح تعديلاتك في هذا المتصفح والعودة للبيانات الأصلية. متابعة؟')){try{localStorage.removeItem(LSK)}catch(e){}location.reload()}}}
  const g=document.getElementById('gsel');if(g)g.onchange=()=>{fg=+g.value;render()};
  const qi=document.getElementById('qin');if(qi)qi.onchange=()=>{q=qi.value.trim();render()};
  const cp=document.getElementById('cp');if(cp)cp.onclick=async()=>{try{await navigator.clipboard.writeText(document.getElementById('rp').innerText);cp.textContent='تم النسخ'}catch(e){const r=document.createRange();r.selectNodeContents(document.getElementById('rp'));const s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent='حدّد النص وانسخه'}};
 }
+const LSK='opd1448';
+function tools(){return `<div class="card" style="margin-top:12px"><h3>إدارة البيانات</h3><p class="note" style="margin:0 0 10px">تُحفظ تعديلاتك في هذا المتصفح على هذا الجهاز. لنقلها إلى جهاز آخر صدّرها هنا ثم استوردها هناك.</p><div class="row" style="flex-wrap:wrap;gap:8px"><button id="ex">تصدير البيانات</button><button id="im">استيراد بيانات</button><input type="file" id="imf" accept=".json" style="display:none"><button id="rs">إعادة البيانات الأصلية</button></div></div>`}
 function route(){const h=location.hash.slice(1);tab=['dash','progs','monthly','stalled','report'].includes(h)?h:'dash';render()}
 addEventListener('hashchange',route);route();
 
 sv.onclick=async()=>{
- if(!art)return;sv.textContent='جارٍ الحفظ…';
+ if(!art)return;if(art.local){try{localStorage.setItem(LSK,JSON.stringify(D));sv.textContent='تم الحفظ في هذا المتصفح ✓';dirty=false;setTimeout(()=>{sv.style.display='none';sv.textContent='حفظ التغييرات'},1800)}catch(e){sv.textContent='تعذّر الحفظ: المتصفح يمنع التخزين'}return}sv.textContent='جارٍ الحفظ…';
  const i=SHELL.indexOf(BM)+BM.length,j=SHELL.indexOf(EM);
  const html='<!DOCTYPE html>\n'+SHELL.slice(0,i)+JSON.stringify(D).replace(/</g,'\\u003c')+SHELL.slice(j);
  try{await art.publish(html)}catch(e){sv.textContent='تعذّر الحفظ، أعد المحاولة'}
 };
-(async()=>{try{art=await claude.use('artifact')}catch(e){art=null}render()})();
+(async()=>{try{art=await claude.use('artifact')}catch(e){art=null}
+if(!art){art={local:true};try{const sd=localStorage.getItem(LSK);if(sd){const o=JSON.parse(sd);if(o&&o.P&&o.P.length==D.P.length)D.P=o.P}}catch(e){}}
+render()})();
 </script>
 </body>
 </html>
